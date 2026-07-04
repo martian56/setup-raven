@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install latest
+        id: setup
+        uses: ./
+
+      - name: Toolchain answers
+        run: |
+          raven --version
+          rvpm --version
+
+      - name: Resolved tag is set
+        shell: bash
+        run: |
+          test -n "${{ steps.setup.outputs.raven-version }}"
+          echo "installed ${{ steps.setup.outputs.raven-version }}"
+
+  pinned:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install a pinned release
+        id: setup
+        uses: ./
+        with:
+          raven-version: "2.22.0"
+          cache: "false"
+
+      - name: The pinned version answers
+        run: |
+          raven --version | grep '2.22.0'
+          test "${{ steps.setup.outputs.raven-version }}" = "v2.22.0"
