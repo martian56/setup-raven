@@ -8,7 +8,7 @@ branding:
 inputs:
   raven-version:
     description: >-
-      The Raven release to install, for example "3.0.0". The default
+      The Raven release to install, for example "3.0.1". The default
       "latest" installs the newest release.
     required: false
     default: latest
@@ -25,7 +25,7 @@ inputs:
 
 outputs:
   raven-version:
-    description: The release tag that was installed, for example "v3.0.0".
+    description: The release tag that was installed, for example "v3.0.1".
     value: ${{ steps.resolve.outputs.tag }}
 
 runs:

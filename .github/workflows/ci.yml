@@ -40,10 +40,10 @@ jobs:
         id: setup
         uses: ./
         with:
-          raven-version: "2.22.0"
+          raven-version: "3.0.1"
           cache: "false"
 
       - name: The pinned version answers
         run: |
-          raven --version | grep '2.22.0'
-          test "${{ steps.setup.outputs.raven-version }}" = "v2.22.0"
+          raven --version | grep '3.0.1'
+          test "${{ steps.setup.outputs.raven-version }}" = "v3.0.1"
