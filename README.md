@@ -12,7 +12,7 @@ steps:
 
   - uses: martian56/setup-raven@v1
     with:
-      raven-version: "2.22.0"
+      raven-version: "3.0.1"
 
   - run: rvpm build
   - run: rvpm test
@@ -29,7 +29,7 @@ With no `raven-version`, the latest release is installed:
 
 | Input | Default | Meaning |
 |-------|---------|---------|
-| `raven-version` | `latest` | Release to install, for example `2.22.0` |
+| `raven-version` | `latest` | Release to install, for example `3.0.1` |
 | `cache` | `true` | Cache `~/.rvpm/cache`, keyed on the repository's `rv.toml` files |
 | `token` | `github.token` | Token used to download the release assets |
 
@@ -37,7 +37,7 @@ With no `raven-version`, the latest release is installed:
 
 | Output | Meaning |
 |--------|---------|
-| `raven-version` | The release tag that was installed, for example `v2.22.0` |
+| `raven-version` | The release tag that was installed, for example `v3.0.1` |
 
 ## Platforms
 
